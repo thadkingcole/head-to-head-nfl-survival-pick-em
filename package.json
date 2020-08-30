@@ -1,0 +1,26 @@
+{
+  "name": "head-to-head-nfl-survival-pick-em",
+  "version": "1.0.0",
+  "description": "An NFL survival pick'em game specifically for 2 people over the course of a season.",
+  "main": "server.js",
+  "scripts": {
+    "test": "eslint --quiet .",
+    "fix": "eslint --fix ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thadkingcole/head-to-head-nfl-survival-pick-em.git"
+  },
+  "author": "Thaddeus Cole",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thadkingcole/head-to-head-nfl-survival-pick-em/issues"
+  },
+  "homepage": "https://github.com/thadkingcole/head-to-head-nfl-survival-pick-em#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.7.0"
+  }
+}
