@@ -20,13 +20,13 @@
 
 ## Installation
 
-*installation instructions go here*
+```installation instructions go here```
 
 [back to Table of Contents](#table-of-contents)
 
 ## Usage
 
-*usage information goes here*
+```usage information goes here```
 
 [back to Table of Contents](#table-of-contents)
 
