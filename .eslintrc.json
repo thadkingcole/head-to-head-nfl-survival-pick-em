@@ -11,7 +11,7 @@
   },
   "rules": {
     "array-callback-return": "error",
-    "camelcase": "error",
+    "camelcase": 1,
     "curly": "error",
     "dot-notation": "error",
     "eqeqeq": "error",
