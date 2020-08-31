@@ -14,6 +14,7 @@ module.exports = (app) => {
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
   app.post("/api/signup", (req, res) => {
+    // TODO add code to prevent more than 2 users signing up
     db.User.create({
       username: req.body.username,
       password: req.body.password,
