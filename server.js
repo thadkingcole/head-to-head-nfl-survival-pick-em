@@ -1,5 +1,6 @@
 // * required modules
 const express = require("express"); // app instance
+const exphbs = require("express-handlebars"); // handlebars view generator
 const db = require("./models"); // database models
 const passport = require("./config/passport"); // our configured passport module
 const session = require("express-session"); // keep track of user login status
@@ -9,6 +10,9 @@ const PORT = process.env.PORT || 3220; // number of NFL teams & current year
 
 // * create app instance
 const app = express();
+// use handlebars as view engine
+app.engine("handlebars", exphbs());
+app.set("view engine", "handlebars");
 // configure express app
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
