@@ -22,6 +22,5 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: false,
     },
   });
-
   return Team;
 };

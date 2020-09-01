@@ -1,0 +1,226 @@
+[
+  {
+    "name": "Bills",
+    "market": "Buffalo",
+    "alias": "BUF",
+    "color1": "#00338d",
+    "color2": "#c60c30"
+  },
+  {
+    "name": "Dolphins",
+    "market": "Miami",
+    "alias": "MIA",
+    "color1": "#008e97",
+    "color2": "#fc4c02"
+  },
+  {
+    "name": "Jets",
+    "market": "New York",
+    "alias": "NYJ",
+    "color1": "#125740",
+    "color2": "#000000"
+  },
+  {
+    "name": "Patriots",
+    "market": "New England",
+    "alias": "NE",
+    "color2": "#c60c30",
+    "color1": "#002244"
+  },
+  {
+    "name": "Bengals",
+    "market": "Cincinnati",
+    "alias": "CIN",
+    "color2": "#000000",
+    "color1": "#fb4f14"
+  },
+  {
+    "name": "Browns",
+    "market": "Cleveland",
+    "alias": "CLE",
+    "color2": "#ff3c00",
+    "color1": "#311d00"
+  },
+  {
+    "name": "Ravens",
+    "market": "Baltimore",
+    "alias": "BAL",
+    "color2": "#000000",
+    "color1": "#1a195f"
+  },
+  {
+    "name": "Steelers",
+    "market": "Pittsburgh",
+    "alias": "PIT",
+    "color1": "#ffb612",
+    "color2": "#101820"
+  },
+  {
+    "name": "Colts",
+    "market": "Indianapolis",
+    "alias": "IND",
+    "color1": "#002c5f",
+    "color2": "#a2aaad"
+  },
+  {
+    "name": "Jaguars",
+    "market": "Jacksonville",
+    "alias": "JAC",
+    "color1": "#101820",
+    "color2": "#d7a22a"
+  },
+  {
+    "name": "Texans",
+    "market": "Houston",
+    "alias": "HOU",
+    "color1": "#03202f",
+    "color2": "#a71930"
+  },
+  {
+    "name": "Titans",
+    "market": "Tennessee",
+    "alias": "TEN",
+    "color1": "#0c2340",
+    "color2": "#418fde"
+  },
+  {
+    "name": "Broncos",
+    "market": "Denver",
+    "alias": "DEN",
+    "color2": "#002244",
+    "color1": "#fb4f14"
+  },
+  {
+    "name": "Chargers",
+    "market": "Los Angeles",
+    "alias": "LAC",
+    "color1": "#002a5e",
+    "color2": "#ffc20e"
+  },
+  {
+    "name": "Chiefs",
+    "market": "Kansas City",
+    "alias": "KC",
+    "color2": "#ffb81c",
+    "color1": "#e31837"
+  },
+  {
+    "name": "Raiders",
+    "market": "Las Vegas",
+    "alias": "LV",
+    "color1": "#000000",
+    "color2": "#A5ACAF"
+  },
+  {
+    "name": "Cowboys",
+    "market": "Dallas",
+    "alias": "DAL",
+    "color2": "#869397",
+    "color1": "#002244"
+  },
+  {
+    "name": "Eagles",
+    "market": "Philadelphia",
+    "alias": "PHI",
+    "color2": "#a5acaf",
+    "color1": "#004c54"
+  },
+  {
+    "name": "Football Team",
+    "market": "Washington",
+    "alias": "WAS",
+    "color2": "#ffb612",
+    "color1": "#3f1010"
+  },
+  {
+    "name": "Giants",
+    "market": "New York",
+    "alias": "NYG",
+    "color2": "#a30d2d",
+    "color1": "#012352"
+  },
+  {
+    "name": "Bears",
+    "market": "Chicago",
+    "alias": "CHI",
+    "color2": "#c83803",
+    "color1": "#0b162a"
+  },
+  {
+    "name": "Lions",
+    "market": "Detroit",
+    "alias": "DET",
+    "color2": "#b0b7bc",
+    "color1": "#0076b6"
+  },
+  {
+    "name": "Packers",
+    "market": "Green Bay",
+    "alias": "GB",
+    "color2": "#ffb81c",
+    "color1": "#183028"
+  },
+  {
+    "name": "Vikings",
+    "market": "Minnesota",
+    "alias": "MIN",
+    "color2": "#ffc62f",
+    "color1": "#4f2683"
+  },
+  {
+    "name": "Buccaneers",
+    "market": "Tampa Bay",
+    "alias": "TB",
+    "color2": "#0a0a08",
+    "color1": "#d50a0a"
+  },
+  {
+    "name": "Falcons",
+    "market": "Atlanta",
+    "alias": "ATL",
+    "color2": "#a71930",
+    "color1": "#000000"
+  },
+  {
+    "name": "Panthers",
+    "market": "Carolina",
+    "alias": "CAR",
+    "color1": "#0085ca",
+    "color2": "#101820"
+  },
+  {
+    "name": "Saints",
+    "market": "New Orleans",
+    "alias": "NO",
+    "color1": "#d3bc8d",
+    "color2": "#10181f"
+  },
+  {
+    "name": "49ers",
+    "market": "San Francisco",
+    "alias": "SF",
+    "color1": "#aa0000",
+    "color2": "#ad995d"
+  },
+  {
+    "name": "Cardinals",
+    "market": "Arizona",
+    "alias": "ARI",
+    "color1": "#97233f",
+    "color2": "#000000"
+  },
+  {
+    "name": "Rams",
+    "market": "Los Angeles",
+    "alias": "LA",
+    "color1": "#002244",
+    "color2": "#866d4b"
+  },
+  {
+    "name": "Seahawks",
+    "market": "Seattle",
+    "alias": "SEA",
+    "color1": "#002244",
+    "color2": "#69be28"
+  }
+]

@@ -1,3 +1,4 @@
+// this file replaces config.json & allows the use of env variables
 require("dotenv").config();
 module.exports = {
   development: {
