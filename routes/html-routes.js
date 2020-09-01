@@ -1,6 +1,7 @@
 // * required modules
 const path = require("path");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
+const db = require("../models");
 
 // app is the express instance initiated in server.js
 module.exports = (app) => {
@@ -13,8 +14,24 @@ module.exports = (app) => {
   });
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/members", isAuthenticated, (req, res) => {
-    res.render("home");
+  app.get("/members", isAuthenticated, async (req, res) => {
+    const inUser = {
+      username: req.user.username,
+      wins: req.user.wins,
+      pointDiff: req.user.pointDiff,
+    };
+    const allUsers = await db.User.findAll({
+      attributes: {
+        // never a good idea to return a password, hashed or not
+        exclude: ["password"],
+      },
+      // order by wins, then by point diff
+      order: [
+        ["wins", "desc"],
+        ["pointDiff", "desc"],
+      ],
+    });
+    res.render("home", { inUser, allUsers });
     // res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 };
