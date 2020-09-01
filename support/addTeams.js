@@ -29,8 +29,8 @@ db.Team.count().then((teamCount) => {
       color2: team.color2,
     });
   });
-  
-  console.log("added teams to teams model")
+
+  console.log("added teams to teams model");
 
   return;
 });
