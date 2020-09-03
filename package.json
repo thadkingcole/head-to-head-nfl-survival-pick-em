@@ -4,8 +4,13 @@
   "description": "An NFL survival pick'em game specifically for 2 people over the course of a season.",
   "main": "server.js",
   "scripts": {
+    "clean": "npm-run-all drop create seed",
+    "drop": "sequelize db:drop",
+    "create": "sequelize db:create",
+    "seed": "node support/addTeams.js",
+    "fix": "eslint --fix .",
     "test": "eslint --quiet .",
-    "fix": "eslint --fix ."
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +35,7 @@
   },
   "devDependencies": {
     "@types/jquery": "^3.5.1",
-    "eslint": "^7.7.0"
+    "eslint": "^7.7.0",
+    "npm-run-all": "^4.1.5"
   }
 }

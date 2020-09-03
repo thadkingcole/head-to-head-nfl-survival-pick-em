@@ -15,12 +15,10 @@ module.exports = (sequelize, DataTypes) => {
     color2: {
       type: DataTypes.STRING(7), // "#ffb81c" aka gold
     },
-    picked: {
-      // will change to true when picked & win
-      // picked and lose keeps the team in play for future weeks
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
   });
+
+  Team.associate = (models) => {
+    Team.belongsTo(models.User);
+  };
   return Team;
 };
