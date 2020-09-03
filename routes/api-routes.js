@@ -1,8 +1,27 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+require("dotenv").config();
+const axios = require("axios").default;
+const moment = require("moment");
 
 module.exports = (app) => {
+  // get list of a week's games
+  app.get("/week/:num", (req, res) => {
+    const weekNum = req.params.num;
+    const year = 2020; // ! change at start of this each season
+    const sportradarWeekUrl = `http://api.sportradar.us/nfl/official/trial/v6/en/games/${year}/REG/${weekNum}/schedule.json?api_key=${process.env.sportsradarApiKey}
+    `;
+    axios.get(sportradarWeekUrl).then((response) => {
+      const gameInfo = response.data.week.games.map((game) => {
+        const gameTime = moment(game.scheduled).format("ddd M/D h:mm a");
+        const gameStr = `${game.away.alias} @ ${game.home.alias}`;
+        return { gameTime, gameStr };
+      });
+      res.json(gameInfo);
+    });
+  });
+
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
