@@ -15,11 +15,13 @@ module.exports = (app) => {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, async (req, res) => {
+    // get data for logged in user
     const inUser = {
       username: req.user.username,
       wins: req.user.wins,
       pointDiff: req.user.pointDiff,
     };
+    // get data for all users for standings
     const allUsers = await db.User.findAll({
       attributes: {
         // never a good idea to return a password, hashed or not
@@ -31,7 +33,9 @@ module.exports = (app) => {
         ["pointDiff", "desc"],
       ],
     });
-    res.render("home", { inUser, allUsers });
+    // get list of available teams
+    const allTeams = await db.Team.findAll({});
+    res.render("home", { inUser, allUsers, allTeams });
     // res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 };

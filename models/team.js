@@ -15,10 +15,13 @@ module.exports = (sequelize, DataTypes) => {
     color2: {
       type: DataTypes.STRING(7), // "#ffb81c" aka gold
     },
+    weekPicked: {
+      type: DataTypes.INTEGER, // week number the team was picked
+    }
   });
 
   Team.associate = (models) => {
-    Team.belongsTo(models.User);
+    Team.belongsTo(models.User); // the UserId of who picked the team
   };
   return Team;
 };

@@ -1,0 +1,16 @@
+<h3>Available Teams</h3>
+<ul>
+  {{#each allTeams}}
+    {{#unless this.dataValues.UserId}}
+      <li>{{this.dataValues.location}} {{this.dataValues.name}}</li>
+    {{/unless}}
+  {{/each}}
+</ul>
+<h3>Picked Teams</h3>
+<ul>
+  {{#each allTeams}}
+    {{#if this.dataValues.UserId}}
+      <li>{{this.dataValues.location}} {{this.dataValues.name}}</li>
+    {{/if}}
+  {{/each}}
+</ul>
