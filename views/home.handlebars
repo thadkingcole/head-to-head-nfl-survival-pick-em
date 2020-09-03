@@ -1,21 +1,3 @@
-<h1>Welcome, {{inUser.username}}!</h1>
+{{> jumbotron}}
 <hr>
-<h2>STANDINGS</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Wins</th>
-      <th>Point Diff</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each allUsers}}
-      <tr>
-        <td>{{this.dataValues.username}}</td>
-        <td>{{this.dataValues.wins}}</td>
-        <td>{{this.dataValues.pointDiff}}</td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+{{> standings}}
