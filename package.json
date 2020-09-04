@@ -10,7 +10,7 @@
     "seed": "node support/addTeams.js",
     "fix": "eslint --fix .",
     "test": "eslint --quiet .",
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
