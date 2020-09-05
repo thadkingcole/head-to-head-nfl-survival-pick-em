@@ -32,18 +32,25 @@ module.exports = (app) => {
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // otherwise send back an error
-  app.post("/api/signup", (req, res) => {
-    // TODO add code to prevent more than 2 users signing up
-    db.User.create({
-      username: req.body.username,
-      password: req.body.password,
-    })
-      .then(() => {
-        res.redirect(307, "/api/login");
+  app.post("/api/signup", async (req, res) => {
+    // Prevent more than 2 users signing up
+    const userCount = await db.User.count();
+    // if less than 2 users, allow the signup to happen
+    if (userCount < 2) {
+      db.User.create({
+        username: req.body.username,
+        password: req.body.password,
       })
-      .catch((err) => {
-        res.status(401).json(err);
-      });
+        .then(() => {
+          res.redirect(307, "/api/login");
+        })
+        .catch((err) => {
+          res.status(401).json(err);
+        });
+    } else {
+      // do not allow more signups after adding 2 users
+      res.status(403).json("There are already 2 users");
+    }
   });
 
   // Route for logging user out
