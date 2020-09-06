@@ -38,7 +38,9 @@ module.exports = (app) => {
         game.time = game.time.format("ddd M/D h:mm a");
       });
       res.json(gameInfo);
-    });
+    }).catch((err => {
+      console.log(err);
+    }));
   });
 
   // Using the passport.authenticate middleware with our local strategy.
