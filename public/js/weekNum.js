@@ -23,14 +23,17 @@ function getWeekGames() {
 
         // create top row for away team
         const awayRow = document.createElement("tr");
+        awayRow.className = "border-top";
         // put game time in first cell
         const gameTime = document.createElement("td");
         gameTime.innerText = game.time;
+        gameTime.className = "text-center";
         // put away team in 2nd cell
         const awayTeam = document.createElement("td");
         awayTeam.innerText = game.away;
         // make space for away score
         const awayScore = document.createElement("td");
+        awayScore.className = "text-right";
         // put away row all together
         awayRow.appendChild(gameTime);
         awayRow.appendChild(awayTeam);
@@ -38,7 +41,6 @@ function getWeekGames() {
 
         // create bottom row for home team
         const homeRow = document.createElement("tr");
-        homeRow.className = "border-bottom";
         // put "@" symbol in first cell
         const atEl = document.createElement("td");
         atEl.innerText = "@";
@@ -48,6 +50,7 @@ function getWeekGames() {
         homeTeam.innerText = game.home;
         // make space for home score
         const homeScore = document.createElement("td");
+        homeScore.className = "text-right";
         // put home row together
         homeRow.appendChild(atEl);
         homeRow.appendChild(homeTeam);

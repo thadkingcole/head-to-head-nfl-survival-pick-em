@@ -1,2 +1,15 @@
-<h1>Welcome, {{inUser.username}}!</h1>
-<a href="/logout">logout</a>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <header class="row">
+      <div class="col">
+        <h1>Welcome, {{inUser.username}}!</h1>
+        <nav>
+          <a href="/logout">logout</a>
+        </nav>
+      </div>
+      <div class="col">
+        {{> standings}}
+      </div>
+    </header>
+  </div>
+</div>
