@@ -14,16 +14,29 @@ module.exports = (app) => {
     `;
     axios.get(sportradarWeekUrl).then((response) => {
       const gameInfo = response.data.week.games.map((game) => {
-        const id = game.id;
-        const num = game.number;
-        const time = moment(game.scheduled).format("ddd M/D h:mm a");
-        const away = game.away.name;
-        const home = game.home.name;
-        return { id, num, time, away, home };
+        const gameData = {
+          id: game.id,
+          num: game.number,
+          time: moment(game.scheduled),
+          away: game.away.name,
+          home: game.home.name,
+        };
+        // get score if it exists
+        if (game.scoring) {
+          gameData.score = {
+            home: game.scoring.home_points,
+            away: game.scoring.away_points,
+          };
+        }
+        return gameData;
       });
-      // put in order by asc game number, which goes in order from thu to mon
-      gameInfo.sort((a, b) => a.num - b.num);
-
+      // sort by games from Thursday to Monday
+      gameInfo.sort((a, b) => (a.time.isSameOrBefore(b.time) ? -1 : 1));
+      // now that the array is sorted, we can format the moment into human
+      // readable strings
+      gameInfo.forEach((game) => {
+        game.time = game.time.format("ddd M/D h:mm a");
+      });
       res.json(gameInfo);
     });
   });

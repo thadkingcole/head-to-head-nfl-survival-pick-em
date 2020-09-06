@@ -20,7 +20,11 @@ function getWeekGames() {
       data.forEach((game) => {
         const gameEL = document.createElement("div");
         // TODO change to table vice list
-        gameEL.innerText = `${game.time} | ${game.away} @ ${game.home}`;
+        if (game.score) {
+          gameEL.innerText = `${game.time} | ${game.away} ${game.score.away} @ ${game.home} ${game.score.home}`;
+        } else {
+          gameEL.innerText = `${game.time} | ${game.away} @ ${game.home}`;
+        }
         gamesEl.appendChild(gameEL);
       });
     });
