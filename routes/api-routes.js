@@ -10,32 +10,34 @@ module.exports = (app) => {
   app.get("/week/:num", (req, res) => {
     const weekNum = req.params.num;
     const year = 2020; // ! change at start of this each season
-    const sportradarWeekUrl = `http://api.sportradar.us/nfl/official/trial/v6/en/games/${year}/REG/${weekNum}/schedule.json?api_key=${process.env.sportsradarApiKey}
-    `;
-    axios.get(sportradarWeekUrl).then((response) => {
-      const gameInfo = response.data.week.games.map((game) => {
-        const gameData = {
-          id: game.id,
-          num: game.number,
-          time: moment(game.scheduled),
-          away: game.away.name,
-          home: game.home.name,
-        };
-        // get score if it exists
-        if (game.scoring) {
-          gameData.score = {
-            home: game.scoring.home_points,
-            away: game.scoring.away_points,
+    const sportradarWeekUrl = `http://api.sportradar.us/nfl/official/trial/v6/en/games/${year}/REG/${weekNum}/schedule.json?api_key=${process.env.sportsradarApiKey}`;
+    axios
+      .get(sportradarWeekUrl)
+      .then((response) => {
+        const gameInfo = response.data.week.games.map((game) => {
+          const gameData = {
+            id: game.id,
+            num: game.number,
+            time: moment(game.scheduled),
+            away: game.away.name,
+            home: game.home.name,
           };
-        }
-        return gameData;
+          // get score if it exists
+          if (game.scoring) {
+            gameData.score = {
+              home: game.scoring.home_points,
+              away: game.scoring.away_points,
+            };
+          }
+          return gameData;
+        });
+        // sort by games from Thursday to Monday
+        gameInfo.sort((a, b) => (a.time.isSameOrBefore(b.time) ? -1 : 1));
+        res.json(gameInfo);
+      })
+      .catch((err) => {
+        console.log(err);
       });
-      // sort by games from Thursday to Monday
-      gameInfo.sort((a, b) => (a.time.isSameOrBefore(b.time) ? -1 : 1));
-      res.json(gameInfo);
-    }).catch((err => {
-      console.log(err);
-    }));
   });
 
   // Using the passport.authenticate middleware with our local strategy.
