@@ -38,9 +38,11 @@ function getWeekGames() {
 
         // create bottom row for home team
         const homeRow = document.createElement("tr");
+        homeRow.className = "border-bottom";
         // put "@" symbol in first cell
         const atEl = document.createElement("td");
         atEl.innerText = "@";
+        atEl.className = "text-right";
         // put home team in 2nd cell
         const homeTeam = document.createElement("td");
         homeTeam.innerText = game.home;
