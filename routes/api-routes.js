@@ -32,11 +32,6 @@ module.exports = (app) => {
       });
       // sort by games from Thursday to Monday
       gameInfo.sort((a, b) => (a.time.isSameOrBefore(b.time) ? -1 : 1));
-      // now that the array is sorted, we can format the moment into human
-      // readable strings
-      gameInfo.forEach((game) => {
-        game.time = game.time.format("ddd M/D h:mm a");
-      });
       res.json(gameInfo);
     }).catch((err => {
       console.log(err);

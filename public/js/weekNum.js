@@ -18,12 +18,15 @@ function getWeekGames() {
     .then((response) => response.json())
     .then((data) => {
       data.forEach((game) => {
+        // display gametime in client's local time
+        game.time = moment(game.time).local().format("dd M/D h:mm a");
         const gameEL = document.createElement("div");
         // TODO change to table vice list
+        // include game score if available
         if (game.score) {
-          gameEL.innerText = `${game.time} | ${game.away} ${game.score.away} @ ${game.home} ${game.score.home}`;
+          gameEL.innerText = `${game.time} ${game.away} ${game.score.away} @ ${game.home} ${game.score.home}`;
         } else {
-          gameEL.innerText = `${game.time} | ${game.away} @ ${game.home}`;
+          gameEL.innerText = `${game.time} ${game.away} @ ${game.home}`;
         }
         gamesEl.appendChild(gameEL);
       });
