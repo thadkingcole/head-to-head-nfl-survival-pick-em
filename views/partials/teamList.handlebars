@@ -1,16 +1,111 @@
-<h3>Available Teams</h3>
-<ul>
-  {{#each allTeams}}
-    {{#unless this.dataValues.UserId}}
-      <li>{{this.dataValues.location}} {{this.dataValues.name}}</li>
-    {{/unless}}
-  {{/each}}
-</ul>
-<h3>Picked Teams</h3>
-<ul>
-  {{#each allTeams}}
-    {{#if this.dataValues.UserId}}
-      <li>{{this.dataValues.location}} {{this.dataValues.name}}</li>
-    {{/if}}
-  {{/each}}
-</ul>
+<div class="col">
+  <h3>Available Teams</h3>
+  <ul>
+    {{#each allTeams}}
+      {{#unless this.dataValues.UserId}}
+        <li>{{this.dataValues.location}} {{this.dataValues.name}}</li>
+      {{/unless}}
+    {{/each}}
+  </ul>
+</div>
+
+<div class="col">
+  <h3>Picked Teams</h3>
+  <table>
+    <thead>
+      <tr>
+        <td>Week</td>
+        {{#each allUsers}}
+          <td>{{this.dataValues.username}}</td>
+        {{/each}}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="week">1</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">2</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">3</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">4</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">5</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">6</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">7</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">8</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">9</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">10</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">11</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">12</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">13</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">14</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">15</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">16</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+      <tr>
+        <td class="week">17</td>
+        <td class="user1team"></td>
+        <td class="user2team"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
