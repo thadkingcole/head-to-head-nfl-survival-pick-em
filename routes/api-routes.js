@@ -52,7 +52,6 @@ module.exports = (app) => {
     axios
       .get(url)
       .then(({ data }) => {
-        const currentWeek = data.week.sequence;
         data.conferences.forEach((conference) => {
           conference.divisions.forEach((division) => {
             division.teams.forEach((team) => {
