@@ -4,6 +4,7 @@ const passport = require("../config/passport");
 require("dotenv").config();
 const axios = require("axios").default;
 const moment = require("moment");
+const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 // global constant for the season year
 const year = 2020; // ! change at start of this each season
@@ -51,7 +52,7 @@ module.exports = (app) => {
     axios
       .get(url)
       .then(({ data }) => {
-        console.log(data);
+        const currentWeek = data.week.sequence;
         data.conferences.forEach((conference) => {
           conference.divisions.forEach((division) => {
             division.teams.forEach((team) => {
@@ -80,6 +81,42 @@ module.exports = (app) => {
       .catch((err) => {
         console.log(err);
       });
+  });
+
+  // allow user to make pick for the week
+  app.post("/api/pick", isAuthenticated, async (req, res) => {
+    const { week, team } = req.body;
+    // first clear out this week's pick if exists
+    await db.Team.update(
+      {
+        weekPicked: null,
+        UserId: null,
+      },
+      {
+        where: {
+          weekPicked: week,
+          UserId: req.user.id,
+        },
+      }
+    ).catch((err) => {
+      res.status(500).json(err);
+    });
+    // then update db with the new team picked
+    await db.Team.update(
+      {
+        weekPicked: week,
+        UserId: req.user.id,
+      },
+      {
+        where: {
+          abbr: team,
+        },
+      }
+    ).catch((err) => {
+      res.status(500).json(err);
+    });
+
+    res.sendStatus(200);
   });
 
   // Using the passport.authenticate middleware with our local strategy.

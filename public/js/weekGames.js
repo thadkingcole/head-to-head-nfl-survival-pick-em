@@ -5,6 +5,20 @@ const gamesTable = document.getElementById("games");
 // TODO get current week from "standings" sportradar endpoint
 
 // * functions
+// picks the team the user clicks from the schedule
+function pickTeam(event) {
+  const classes = event.target.parentElement.className.split(" ");
+  const team = classes[classes.length - 1]; // last class is always team abbr
+  const week = weekEl.value;
+  fetch("/api/pick", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ team, week }),
+  });
+}
+
 function getWeekGames() {
   // * takes weekNum and returns array of NFL games in the given week
   // remove any games in gamesTable
@@ -61,15 +75,23 @@ function getWeekGames() {
         if (game.score) {
           awayScore.innerText = game.score.away;
           homeScore.innerText = game.score.home;
+        } else {
+          // add event listeners for each team
+          // ensures teams can't be picked after the game has started
+          awayTeam.onclick = pickTeam;
+          homeTeam.onclick = pickTeam;
         }
 
         // put both rows on table
         gamesTable.appendChild(awayRow);
         gamesTable.appendChild(homeRow);
+
+        // add event listeners for each team
       });
     });
 }
 
-// * event listeners
-getWeekGames();
+// * main
+
+getWeekGames(); // show current week's games
 weekEl.onchange = getWeekGames;
