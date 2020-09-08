@@ -1,15 +1,4 @@
 <div class="col">
-  <h3>Available Teams</h3>
-  <ul>
-    {{#each allTeams}}
-      {{#unless this.dataValues.UserId}}
-        <li class="{{this.dataValues.abbr}} p-1">{{this.dataValues.location}} {{this.dataValues.name}}</li>
-      {{/unless}}
-    {{/each}}
-  </ul>
-</div>
-
-<div class="col">
   <h3>Picked Teams</h3>
   <table class="table table-sm">
     <thead>

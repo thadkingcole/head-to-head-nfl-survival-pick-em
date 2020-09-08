@@ -5,14 +5,16 @@ require("dotenv").config();
 const axios = require("axios").default;
 const moment = require("moment");
 
+// global constant for the season year
+const year = 2020; // ! change at start of this each season
+
 module.exports = (app) => {
   // get list of a week's games
-  app.get("/week/:num", (req, res) => {
+  app.get("/sr/week/:num", (req, res) => {
     const weekNum = req.params.num;
-    const year = 2020; // ! change at start of this each season
-    const sportradarWeekUrl = `http://api.sportradar.us/nfl/official/trial/v6/en/games/${year}/REG/${weekNum}/schedule.json?api_key=${process.env.sportsradarApiKey}`;
+    const url = `http://api.sportradar.us/nfl/official/trial/v6/en/games/${year}/REG/${weekNum}/schedule.json?api_key=${process.env.sportsradarApiKey}`;
     axios
-      .get(sportradarWeekUrl)
+      .get(url)
       .then((response) => {
         const gameInfo = response.data.week.games.map((game) => {
           const gameData = {
@@ -36,6 +38,44 @@ module.exports = (app) => {
         // sort by games from Thursday to Monday
         gameInfo.sort((a, b) => (a.time.isSameOrBefore(b.time) ? -1 : 1));
         res.json(gameInfo);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  });
+
+  // get records for each team
+  app.get("/sr/standings", (req, res) => {
+    const year = 2019; // ! delete this line after week 1
+    const url = `http://api.sportradar.us/nfl/official/trial/v6/en/seasons/${year}/standings.json?api_key=${process.env.sportsradarApiKey}`;
+    axios
+      .get(url)
+      .then(({ data }) => {
+        console.log(data);
+        data.conferences.forEach((conference) => {
+          conference.divisions.forEach((division) => {
+            division.teams.forEach((team) => {
+              db.Team.update(
+                {
+                  wins: team.wins,
+                  losses: team.losses,
+                  ties: team.ties,
+                },
+                {
+                  where: {
+                    abbr: team.alias,
+                  },
+                }
+              )
+                .then((response) => {
+                  res.status(200).json(response);
+                })
+                .catch((err) => {
+                  res.status(500).json(err);
+                });
+            });
+          });
+        });
       })
       .catch((err) => {
         console.log(err);

@@ -14,7 +14,7 @@ function getWeekGames() {
   // get the week number from the dropdown list
   const weekNum = weekEl.value;
   // send to our server api
-  fetch(`/week/${weekNum}`)
+  fetch(`/sr/week/${weekNum}`)
     .then((response) => response.json())
     .then((data) => {
       data.forEach((game) => {

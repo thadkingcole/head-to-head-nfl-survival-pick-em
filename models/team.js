@@ -17,7 +17,19 @@ module.exports = (sequelize, DataTypes) => {
     },
     weekPicked: {
       type: DataTypes.INTEGER, // week number the team was picked
-    }
+    },
+    wins: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    losses: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
+    ties: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   });
 
   Team.associate = (models) => {
