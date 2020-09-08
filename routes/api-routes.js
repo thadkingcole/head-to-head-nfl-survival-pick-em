@@ -20,7 +20,9 @@ module.exports = (app) => {
             num: game.number,
             time: moment(game.scheduled),
             away: game.away.name,
+            awayAbbr: game.away.alias,
             home: game.home.name,
+            homeAbbr: game.home.alias,
           };
           // get score if it exists
           if (game.scoring) {

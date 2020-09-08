@@ -3,7 +3,7 @@
   <ul>
     {{#each allTeams}}
       {{#unless this.dataValues.UserId}}
-        <li>{{this.dataValues.location}} {{this.dataValues.name}}</li>
+        <li class="{{this.dataValues.abbr}} p-1">{{this.dataValues.location}} {{this.dataValues.name}}</li>
       {{/unless}}
     {{/each}}
   </ul>
@@ -11,20 +11,20 @@
 
 <div class="col">
   <h3>Picked Teams</h3>
-  <table>
+  <table class="table table-sm">
     <thead>
       <tr>
-        <td>Week</td>
+        <th>Week</th>
         {{#each allUsers}}
-          <td>{{this.dataValues.username}}</td>
+          <th>{{this.dataValues.username}}</th>
         {{/each}}
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td class="week">1</td>
-        <td class="user1team"></td>
-        <td class="user2team"></td>
+        <td class="week">1</td> {{!-- week picked --}}
+        <td class="user1team"></td> {{!-- UserId = 1 --}}
+        <td class="user2team"></td> {{!-- UserId = 2 --}}
       </tr>
       <tr>
         <td class="week">2</td>

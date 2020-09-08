@@ -19,11 +19,11 @@ function getWeekGames() {
     .then((data) => {
       data.forEach((game) => {
         // display gametime in client's local time
-        game.time = moment(game.time).local().format("dd M/D h:mm a");
+        game.time = moment(game.time).local().format("dd M/D H:mm");
 
         // create top row for away team
         const awayRow = document.createElement("tr");
-        awayRow.className = "border-top";
+        awayRow.className = `border-top border-light ${game.awayAbbr}`;
         // put game time in first cell
         const gameTime = document.createElement("td");
         gameTime.innerText = game.time;
@@ -41,6 +41,7 @@ function getWeekGames() {
 
         // create bottom row for home team
         const homeRow = document.createElement("tr");
+        homeRow.className = game.homeAbbr;
         // put "@" symbol in first cell
         const atEl = document.createElement("td");
         atEl.innerText = "@";
