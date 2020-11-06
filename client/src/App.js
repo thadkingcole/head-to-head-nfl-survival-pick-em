@@ -5,8 +5,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Available from "./components/teams/Available";
 import Picked from "./components/teams/Picked";
+import axios from "axios";
 
 function App() {
+  axios
+    .get("https://site.api.espn.com/apis/v2/sports/football/nfl/standings")
+    .then((res) => console.log(res.data))
+    .catch((err) => console.log(err));
+
   return (
     <>
       <Jumbotron>
