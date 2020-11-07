@@ -1,4 +1,4 @@
-import "./App.css";
+import React, { useState, useEffect } from "react";
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -8,10 +8,17 @@ import Picked from "./components/teams/Picked";
 import axios from "axios";
 
 function App() {
-  axios
-    .get("https://site.api.espn.com/apis/v2/sports/football/nfl/standings")
-    .then((res) => console.log(res.data))
-    .catch((err) => console.log(err));
+  const [allTeams, setAllTeams] = useState([]);
+
+  const allTeamsUrl =
+    "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams?limit=32";
+
+  useEffect(() => {
+    axios
+      .get(allTeamsUrl)
+      .then((res) => setAllTeams(res.data.sports[0].leagues[0].teams))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <>
@@ -25,10 +32,10 @@ function App() {
       <Container>
         <Row>
           <Col>
-            <Available />
+            <Available teams={allTeams} />
           </Col>
           <Col>
-            <Picked />
+            <Picked teams={allTeams} />
           </Col>
         </Row>
       </Container>
