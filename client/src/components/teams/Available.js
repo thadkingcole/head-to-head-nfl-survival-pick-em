@@ -1,20 +1,47 @@
 import React from "react";
+import Table from "react-bootstrap/Table";
 
 function Available({ teams }) {
-  // console.log("teams", teams);
   return (
     <>
-      <h2>List of teams that are Available</h2>
-      <ul>
-        {teams.map((team) => {
-          console.log(team.team.uid)
-          return (
-            <li key={team.team.uid}>
-              {team.team.displayName} ({team.team.record.items[0].summary})
-            </li>
-          );
-        })}
-      </ul>
+      <h2>List of available teams</h2>
+      <Table size="sm">
+        <thead>
+          <tr>
+            <th>Team</th>
+            <th>
+              Record
+              <br />
+              (W-L-T)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {teams.map((team) => {
+            console.log(team)
+            const teamStyle = {
+              backgroundColor: `#${team.team.color}`,
+              color: "white",
+            }
+            return (
+              <tr
+                key={team.team.uid}
+                style={teamStyle}
+              >
+                <td>
+                  <img
+                    src={team.team.logos[0].href}
+                    alt={team.team.abbreviation}
+                    width="25"
+                  />{" "}
+                  {team.team.displayName}
+                </td>
+                <td>{team.team.record.items[0].summary}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
     </>
   );
 }
