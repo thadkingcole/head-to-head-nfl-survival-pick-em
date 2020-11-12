@@ -3,6 +3,7 @@ import Jumbotron from "react-bootstrap/Jumbotron";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Schedule from "./components/schedule";
 import Available from "./components/teams/Available";
 import Picked from "./components/teams/Picked";
 import axios from "axios";
@@ -32,9 +33,10 @@ function App() {
       <Container>
         <Row>
           <Col>
-            <Available teams={allTeams} />
+            <Schedule />
           </Col>
           <Col>
+            <Available teams={allTeams} />
             <Picked teams={allTeams} />
           </Col>
         </Row>
