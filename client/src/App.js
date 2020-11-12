@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import Schedule from "./components/schedule";
 import Available from "./components/teams/Available";
 import Picked from "./components/teams/Picked";
-import axios from "axios";
+import Axios from "axios";
 
 function App() {
   const [allTeams, setAllTeams] = useState([]);
@@ -15,7 +15,7 @@ function App() {
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams?limit=32";
 
   useEffect(() => {
-    axios
+    Axios
       .get(allTeamsUrl)
       .then((res) => setAllTeams(res.data.sports[0].leagues[0].teams))
       .catch((err) => console.log(err));

@@ -18,7 +18,6 @@ function Available({ teams }) {
         </thead>
         <tbody>
           {teams.map((team) => {
-            console.log(team)
             const teamStyle = {
               backgroundColor: `#${team.team.color}`,
               color: "white",
