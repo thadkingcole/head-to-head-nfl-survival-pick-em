@@ -27,9 +27,9 @@ function Schedule() {
         <thead>
           <tr className="text-nowrap">
             <th>Away</th>
-            <th>(W-L-T)</th>
+            <th></th>
             <th>Home</th>
-            <th>(W-L-T)</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -37,8 +37,9 @@ function Schedule() {
             return (
               <tr key={game.uid}>
                 {game.competitions[0].competitors
-                  .slice(0) // shallow copy to display
-                  .reverse() // away then home
+                  // shallow copy to display away then home
+                  .slice(0)
+                  .reverse()
                   .map((team) => {
                     const teamStyle = {
                       backgroundColor: `#${team.team.color}`,
@@ -56,7 +57,9 @@ function Schedule() {
                           {team.team.displayName}
                         </td>
                         <td style={teamStyle} className="text-center">
-                          {team.records[0].summary}
+                          {game.status.type.id >= 2
+                            ? team.score
+                            : team.records[0].summary}
                         </td>
                       </>
                     );
