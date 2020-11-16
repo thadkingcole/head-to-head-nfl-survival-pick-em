@@ -21,15 +21,13 @@ function Schedule() {
 
   return (
     <>
-      {console.log(games)}
       <h2>Week {weekNum}</h2>
       <Table size="sm">
         <thead>
           <tr className="text-nowrap">
-            <th>Away</th>
-            <th></th>
-            <th>Home</th>
-            <th></th>
+            <th colSpan="2">Away</th>
+            <th colSpan="2">Home</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -64,6 +62,29 @@ function Schedule() {
                       </>
                     );
                   })}
+                {(() => {
+                  switch (game.status.type.id) {
+                    // scheduled game (not yet played)
+                    case "1":
+                      return <td>{game.status.type.shortDetail}</td>;
+
+                    // game in progress
+                    case "2":
+                      return (
+                        <td>
+                          {game.status.displayClock} {game.status.period}Q
+                        </td>
+                      );
+
+                    // completed game
+                    case "3":
+                      return <td>Final</td>;
+
+                    // other
+                    default:
+                      return;
+                  }
+                })()}
               </tr>
             );
           })}

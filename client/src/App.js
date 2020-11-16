@@ -35,10 +35,10 @@ function App() {
           <Col>
             <Schedule />
           </Col>
-          <Col>
+          {/* <Col>
             <Available teams={allTeams} />
             <Picked teams={allTeams} />
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </>
