@@ -9,11 +9,7 @@ function Available({ teams }) {
         <thead>
           <tr>
             <th>Team</th>
-            <th>
-              Record
-              <br />
-              (W-L-T)
-            </th>
+            <th className="text-nowrap">W-L-T</th>
           </tr>
         </thead>
         <tbody>
@@ -21,12 +17,9 @@ function Available({ teams }) {
             const teamStyle = {
               backgroundColor: `#${team.team.color}`,
               color: "white",
-            }
+            };
             return (
-              <tr
-                key={team.team.uid}
-                style={teamStyle}
-              >
+              <tr key={team.team.uid} style={teamStyle}>
                 <td>
                   <img
                     src={team.team.logos[0].href}

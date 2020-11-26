@@ -98,7 +98,7 @@ function Schedule() {
                             />
                             {team.team.displayName}
                           </td>
-                          <td style={teamStyle}>
+                          <td style={teamStyle} className="text-nowrap">
                             {game.status.type.id >= 2
                               ? team.score
                               : team.records[0].summary}
@@ -106,7 +106,7 @@ function Schedule() {
                         </Fragment>
                       ) : (
                         <Fragment key={team.team.uid}>
-                          <td style={teamStyle}>
+                          <td style={teamStyle} className="text-nowrap">
                             {game.status.type.id >= 2
                               ? team.score
                               : team.records[0].summary}

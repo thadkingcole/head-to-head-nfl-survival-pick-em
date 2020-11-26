@@ -15,8 +15,7 @@ function App() {
     "https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams?limit=32";
 
   useEffect(() => {
-    Axios
-      .get(allTeamsUrl)
+    Axios.get(allTeamsUrl)
       .then((res) => setAllTeams(res.data.sports[0].leagues[0].teams))
       .catch((err) => console.log(err));
   }, []);
@@ -35,10 +34,10 @@ function App() {
           <Col>
             <Schedule />
           </Col>
-          {/* <Col>
+          <Col sm={4}>
             <Available teams={allTeams} />
             <Picked teams={allTeams} />
-          </Col> */}
+          </Col>
         </Row>
       </Container>
     </>
