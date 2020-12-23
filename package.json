@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/thadkingcole/head-to-head-nfl-survival-pick-em#readme",
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^3.2.0",
     "dotenv": "^8.2.0",
@@ -31,7 +31,7 @@
     "express-session": "^1.17.1",
     "if-env": "^1.0.4",
     "moment": "^2.29.1",
-    "mongoose": "^5.10.13",
+    "mongoose": "^5.11.8",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
   },
