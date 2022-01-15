@@ -9,7 +9,7 @@ function Schedule() {
   const [games, setGames] = useState([]);
 
   const weekList = [];
-  for (let i = 1; i <= 17; i++) {
+  for (let i = 1; i <= 18; i++) {
     weekList.push(i);
   }
 
